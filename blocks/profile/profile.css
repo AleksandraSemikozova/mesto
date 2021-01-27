@@ -1,16 +1,21 @@
 .profile {
-  position: relative;
   max-width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    'avatar info button';
+  grid-template-columns: 120px 336px 1fr;
+  grid-gap: 30px;
   align-items: center;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 670px) {
   .profile {
-    flex-direction: column;
-    max-width: 282px;
-    justify-content: center;
-    margin: 0 auto;
-    text-align: center;
+    grid-template-areas:
+      'avatar'
+      'info'
+      'button';
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 26px;
   }
 }
