@@ -2,9 +2,8 @@
   grid-area: button;
   width: 150px;
   height: 50px;
-  border: 1px solid #FFFFFF;
-  background: url(../../../images/add-button.png) #000 center no-repeat;
-  cursor: pointer;
+  border: 2px solid #FFFFFF;
+  background: url(../../../images/add-button.svg) #000 center no-repeat;
   padding: 0;
   justify-self: end;
 }

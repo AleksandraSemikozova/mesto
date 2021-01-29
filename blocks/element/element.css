@@ -2,7 +2,4 @@
   border-radius: 10px;
   background-color: #fff;
   height: 361px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }

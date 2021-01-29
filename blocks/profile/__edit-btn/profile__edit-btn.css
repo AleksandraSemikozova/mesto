@@ -2,8 +2,7 @@
   width: 24px;
   height: 24px;
   border: 1px solid #FFFFFF;
-  background: url(../../../images/edit-button.png) #000 center no-repeat;
-  cursor: pointer;
+  background: url(../../../images/edit-button.svg) #000 center no-repeat;
   padding: 0;
 }
 
