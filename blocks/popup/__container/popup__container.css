@@ -1,4 +1,8 @@
 .popup__container {
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style:  normal;
+  color: #000;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -12,6 +16,5 @@
 @media screen and (max-width: 520px) {
   .popup__container {
     max-width: 282px;
-    min-height: 322px;
   }
 }
