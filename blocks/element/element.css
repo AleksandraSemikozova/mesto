@@ -1,5 +1,5 @@
 .element {
   border-radius: 10px;
   background-color: #fff;
-  height: 361px;
+  min-height: 361px;
 }

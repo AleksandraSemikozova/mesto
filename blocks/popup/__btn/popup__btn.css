@@ -6,3 +6,7 @@
   height: 50px;
   padding: 0;
 }
+
+.popup__btn:hover {
+  opacity: 0.8;
+}
