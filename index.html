@@ -69,34 +69,30 @@
             <button type="button" class="element__btn btn btn_active"></button>
           </div>
         </div>
-
-      </section>
-
-      <section class="popup">
-        <div class="popup__container">
-          <button type="button" class="popup__close-icon btn">
-          </button>
-          <form action="" class="popup__form">
-            <div class="popup__main-container">
-              <h2 class="popup__title">Редактировать профиль</h2>
-              <fieldset class="popup__input-container">
-                <input type="text" class="popup__item popup__item-name" name="name" value="Жак-Ив Кусто">
-                <input type="text" class="popup__item popup__item-job" name="name" value="Исследователь океана">
-              </fieldset>
-              <fieldset class="popup__submit-container">
-                <button type="submit" class="popup__btn btn">Сохранить</button>
-              </fieldset>
-            </div>
-          </form>
-        </div>
       </section>
 
     </main>
 
     <footer class="footer">
-      <p class="footer__text">&#169; 2021 Семикозова Александра</p>
+      <p class="footer__text">&copy; 2021 Семикозова Александра</p>
     </footer>
   </div>
+
+  <section class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-icon btn">
+      </button>
+      <form action="#" name="popup-form" class="popup__form">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <fieldset class="popup__input-container">
+          <input type="text" class="popup__item popup__item_name" name="name" value="" placeholder="Жак-Ив Кусто">
+          <input type="text" class="popup__item popup__item_job" name="job" value="" placeholder="Исследователь океана">
+        </fieldset>
+        <button type="submit" class="popup__btn btn">Сохранить</button>
+      </form>
+    </div>
+  </section>
+
   <script src="./js/script.js"></script>
 </body>
 </html>
