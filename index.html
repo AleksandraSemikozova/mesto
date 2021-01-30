@@ -71,8 +71,7 @@
         </div>
       </section>
 
-      <section class="popup popup_opened">
-
+      <section class="popup">
         <div class="popup__container">
           <button class="popup__close-icon btn">
           </button>
@@ -80,8 +79,8 @@
             <div class="popup__main-container">
               <h2 class="popup__title">Редактировать профиль</h2>
               <fieldset class="popup__input-container">
-                <input type="text" class="popup__item" placeholder="Жак-Ив Кусто">
-                <input type="text" class="popup__item" placeholder="Исследователь океана">
+                <input type="text" class="popup__item popup__item-name" name="name" value="Жак-Ив Кусто">
+                <input type="text" class="popup__item popup__item-job" name="name" value="Исследователь океана">
               </fieldset>
               <fieldset class="popup__submit-container">
                 <button type="submit" class="popup__btn btn">Сохранить</button>
@@ -90,11 +89,13 @@
           </form>
         </div>
       </section>
+
     </main>
 
     <footer class="footer">
       <p class="footer__text">&#169; 2021 Семикозова Александра</p>
     </footer>
   </div>
+  <script src="./js/script.js"></script>
 </body>
 </html>
