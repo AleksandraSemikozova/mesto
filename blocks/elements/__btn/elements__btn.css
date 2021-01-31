@@ -10,7 +10,7 @@
 }
 
 .elements__btn:active {
-  background: url(../../../../images/heart-active.svg);
+  background: url(../../../images/heart-active.svg);
 }
 
 
