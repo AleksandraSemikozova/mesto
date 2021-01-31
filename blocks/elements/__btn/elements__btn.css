@@ -1,15 +1,15 @@
-.element__btn {
+.elements__btn {
   border: 0;
   width: 22px;
   height: 19px;
   background: url(../../../images/heart.svg) center no-repeat;
 }
 
-.element__btn:hover {
+.elements__btn:hover {
   opacity: 0.5;
 }
 
-.element__btn:active {
+.elements__btn:active {
   background: url(../../../../images/heart-active.svg);
 }
 
