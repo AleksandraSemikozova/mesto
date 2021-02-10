@@ -34,22 +34,27 @@
 
         <section>
           <ul class="elements">
-            <li class="element">
+            <!-- <li class="element">
               <img
                 src="./images/karachaevo.png"
                 alt="Древний храм в горах"
                 class="element__img"
               />
+              <button
+                type="button"
+                aria-label="Удалить"
+                class="element__remove-btn btn"
+              ></button>
               <div class="element__description">
                 <h2 class="element__text">Карачаево-Черкесская Республика</h2>
                 <button
                   type="button"
                   aria-label="Нравится"
-                  class="element__btn btn"
+                  class="element__like-btn btn"
                 ></button>
               </div>
-            </li>
-            <li class="element">
+            </li> -->
+            <!-- <li class="element">
               <img
                 src="./images/gora-elbrus.png"
                 alt="Вид на гору Эльбрус"
@@ -123,7 +128,7 @@
                   class="element__btn btn"
                 ></button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>
@@ -133,12 +138,31 @@
       </footer>
     </div>
 
-    <section class="popup">
+    <template class="template-element">
+      <li class="element">
+        <img src="" alt="" class="element__img" />
+        <button
+          type="button"
+          aria-label="Удалить"
+          class="element__remove-btn btn"
+        ></button>
+        <div class="element__description">
+          <h2 class="element__text"></h2>
+          <button
+            type="button"
+            aria-label="Нравится"
+            class="element__like-btn btn"
+          ></button>
+        </div>
+      </li>
+    </template>
+
+    <section class="popup popup__form-profile">
       <div class="popup__container">
         <button
           type="button"
           aria-label="Закрыть"
-          class="popup__close-icon btn"
+          class="popup__close-icon btn popup__close_profile-popup"
         ></button>
         <form action="#" name="popup-form" class="popup__form">
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -169,7 +193,42 @@
       </div>
     </section>
 
+    <section class="popup popup__form-img">
+      <div class="popup__container">
+        <button
+          type="button"
+          aria-label="Закрыть"
+          class="popup__close-icon btn popup__close_add-img-popup"
+        ></button>
+        <form action="#" name="popup-form" class="popup__form">
+          <h2 class="popup__title">Новое место</h2>
+          <fieldset class="popup__input-container">
+            <input
+              type="text"
+              class="popup__item"
+              name=""
+              value=""
+              placeholder="Название"
+            />
+            <input
+              type="text"
+              class="popup__item"
+              name=""
+              value=""
+              placeholder="Ссылка на картинку"
+            />
+          </fieldset>
+          <button
+            type="submit"
+            aria-label="Сохранить изменения"
+            class="popup__btn btn"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+
     <script src="./js/script.js"></script>
   </body>
 </html>
-<div></div>
