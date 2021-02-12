@@ -54,8 +54,6 @@ const profileJobElement = document.querySelector('.profile__subtitle'); //дея
 const formImgElement = document.querySelector('.popup__form_img'); //Выбираем форму добавления картинок
 const formNameImg = formImgElement.querySelector('.popup__item_type_img-name'); //поле ввода названия картинки
 const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); //поле ввода ссылки на картинку
-const imgName = formNameImg.value; //Название картинки = знаение инпута
-const imgLink = formLinkImg.value; //Ссылка на картинку из инпута
 
 // Функция открывает попап (добавляет стили модификатора)
 const openPopup = (popup) => {
@@ -103,6 +101,9 @@ function submitFormHandler(evt) {
 
 function addNewElement(evt) {
   evt.preventDefault();
+
+  const imgName = formNameImg.value; //Название картинки = знаение инпута
+  const imgLink = formLinkImg.value; //Ссылка на картинку из инпута
 
   elementsContainer.prepend(addElement({ name: imgName, link: imgLink })); //Выполняем функцию добалвения нового элемента с новыми значениями (введенными пользователем)
   formNameImg.value = ''; //Обнуляем поле ввода
