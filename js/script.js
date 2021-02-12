@@ -31,85 +31,101 @@ const elements = [
   },
 ];
 
-const elementsContainer = document.querySelector('.elements');
-const templateElement = document.querySelector('.template-element');
-const popup = document.querySelector('.popup');
-const popupProfile = document.querySelector('.popup__form-profile');
-const popupAddImg = document.querySelector('.popup__form-img');
-const popupOpenProfBtn = document.querySelector('.profile__edit-btn');
-const popupOpenImgBtn = document.querySelector('.profile__add-btn');
-const popupCloseProfBtn = document.querySelector('.popup__close_profile-popup');
-const popupCloseImgBtn = document.querySelector('.popup__close_add-img-popup');
-const formElement = document.querySelector('.popup__form');
-const formNameInput = formElement.querySelector('.popup__item_type_user-name');
-const formJobInput = formElement.querySelector('.popup__item_type_user-job');
-const profileNameElement = document.querySelector('.profile__title');
-const profileJobElement = document.querySelector('.profile__subtitle');
+const elementsContainer = document.querySelector('.elements'); //секция с картинками
+const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
+const popup = document.querySelector('.popup'); //попап общий
+const popupProfile = document.querySelector('.popup__form-profile'); //попап профиля
+const popupAddImg = document.querySelector('.popup__form-img'); //попап добаления картинок
+const openPopupProfileBtn = document.querySelector('.profile__edit-btn'); //кнопка открытия попапа профиля
+const openPopupImgBtn = document.querySelector('.profile__add-btn'); //кнопка открытия попапа добавления картинок
+const closePopupProfileBtn = document.querySelector(
+  '.popup__close_profile-popup'
+); //кнопка закрытия попапа профиля
+const closePopupImgBtn = document.querySelector('.popup__close_add-img-popup'); //кнопка закрытия попапа добавления картинок
+const formProfileElement = document.querySelector('.popup__form_profile'); //выбираем форму редактирования профиля
+const formNameInput = formProfileElement.querySelector(
+  '.popup__item_type_user-name'
+); //выбираем поле ввода имени
+const formJobInput = formProfileElement.querySelector(
+  '.popup__item_type_user-job'
+); //выбираем поле ввода работы
+const profileNameElement = document.querySelector('.profile__title'); //имя в профиле
+const profileJobElement = document.querySelector('.profile__subtitle'); //деятельность в профиле
+const formImgElement = document.querySelector('.popup__form_img'); //Выбираем форму добавления картинок
+const formNameImg = formImgElement.querySelector('.popup__item_type_img-name'); //поле ввода названия картинки
+const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); //поле ввода ссылки на картинку
+const imgName = formNameImg.value; //Название картинки = знаение инпута
+const imgLink = formLinkImg.value; //Ссылка на картинку из инпута
 
+// Функция открывает попап (добавляет стили модификатора)
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
 };
 
-// function openPopup() {
-//   popup.classList.add('popup_opened');
-// formNameInput.value = profileNameElement.textContent;
-// formJobInput.value = profileJobElement.textContent;
-// }
-
-// function closePopup() {
-//   popup.classList.remove('popup_opened');
-// }
-
+//Функция закрывает попап (удаляет стили)
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 };
 
+//Обрабатывает массив
 function render() {
   const elementsList = elements.map(addElement);
   elementsContainer.append(...elementsList);
 }
 
+//Добавляет новый елемент/("собирает" элемент)
 function addElement(element) {
-  const newElement = templateElement.content.cloneNode(true);
-  newElement.querySelector('.element__text').textContent = element.name;
-  newElement.querySelector('.element__img').src = element.link;
-  newElement.querySelector('.element__img').alt = element.name;
-  newElement
-    .querySelector('.element__remove-btn')
+  const newElement = templateElement.content.cloneNode(true); //Берем разметку template
+  newElement.querySelector('.element__text').textContent = element.name; //Берем название картинки из массива и вставляем в новый элемент
+  newElement.querySelector('.element__img').src = element.link; //Берем ссылку на картинки из массива и вставляем в новый элемент
+  newElement.querySelector('.element__img').alt = element.name; //Новый альт из названия
+  newElement //Удалить картинку
+    .querySelector('.element__remove-btn') //Выбираем кнопку "удалить"
     .addEventListener('click', function (event) {
-      event.target.closest('.element').remove();
+      event.target.closest('.element').remove(); //Повесили слушатель с функцией удалять элемент на который был клик
     });
-  newElement
-    .querySelector('.element__like-btn')
+  newElement //Поставить лайк
+    .querySelector('.element__like-btn') //Выбираем кнопку "лайк"
     .addEventListener('click', function (event) {
-      event.target.classList.toggle('element__like-btn_active');
+      event.target.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
     });
 
   return newElement;
 }
 
+//Обрабатывает форму отправки
 function submitFormHandler(evt) {
   evt.preventDefault();
-  profileNameElement.textContent = formNameInput.value;
-  profileJobElement.textContent = formJobInput.value;
-  closePopup(popup);
+  profileNameElement.textContent = formNameInput.value; //Берем значение из инпута и вставляем в профиль (имя пользователя)
+  profileJobElement.textContent = formJobInput.value; //Значение инпута в профиль (деятельность)
+  closePopup(popup); //Закрываем попап
+}
+
+function addNewElement(evt) {
+  evt.preventDefault();
+
+  elementsContainer.prepend(addElement({ name: imgName, link: imgLink })); //Выполняем функцию добалвения нового элемента с новыми значениями (введенными пользователем)
+  formNameImg.value = ''; //Обнуляем поле ввода
+  formLinkImg.value = '';
+  closePopup(popupAddImg);
 }
 
 render();
 
-popupOpenProfBtn.addEventListener('click', () => {
+openPopupProfileBtn.addEventListener('click', () => {
   openPopup(popupProfile);
   formNameInput.value = profileNameElement.textContent;
   formJobInput.value = profileJobElement.textContent;
 });
-popupOpenImgBtn.addEventListener('click', () => {
+openPopupImgBtn.addEventListener('click', () => {
   openPopup(popupAddImg);
 });
-popupCloseProfBtn.addEventListener('click', () => {
+closePopupProfileBtn.addEventListener('click', () => {
   closePopup(popupProfile);
 });
-popupCloseImgBtn.addEventListener('click', () => {
+closePopupImgBtn.addEventListener('click', () => {
   closePopup(popupAddImg);
 });
 
-formElement.addEventListener('submit', submitFormHandler);
+formProfileElement.addEventListener('submit', submitFormHandler);
+formImgElement.addEventListener('submit', addNewElement);

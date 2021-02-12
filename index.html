@@ -164,7 +164,11 @@
           aria-label="Закрыть"
           class="popup__close-icon btn popup__close_profile-popup"
         ></button>
-        <form action="#" name="popup-form" class="popup__form">
+        <form
+          action="#"
+          name="popup-profile"
+          class="popup__form popup__form_profile"
+        >
           <h2 class="popup__title">Редактировать профиль</h2>
           <fieldset class="popup__input-container">
             <input
@@ -200,20 +204,24 @@
           aria-label="Закрыть"
           class="popup__close-icon btn popup__close_add-img-popup"
         ></button>
-        <form action="#" name="popup-form" class="popup__form">
+        <form
+          action="#"
+          name="popup-add-img"
+          class="popup__form popup__form_img"
+        >
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__input-container">
             <input
               type="text"
-              class="popup__item"
-              name=""
+              class="popup__item popup__item_type_img-name"
+              name="img-name"
               value=""
               placeholder="Название"
             />
             <input
               type="text"
-              class="popup__item"
-              name=""
+              class="popup__item popup__item_type_img-link"
+              name="img-link"
               value=""
               placeholder="Ссылка на картинку"
             />
