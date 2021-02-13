@@ -34,18 +34,14 @@ const elements = [
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
 const popup = document.querySelector('.popup'); //попап
-const popupProfile = document.querySelector('.popup__form-profile'); //попап профиля
-const popupAddImg = document.querySelector('.popup__form-img'); //попап добаления картинок
-const popupImage = document.querySelector('.popup__opened-img'); //Попап открытой картинки
+const popupProfile = document.querySelector('.popup-profile'); //попап профиля
 const openPopupProfileBtn = document.querySelector('.profile__edit-btn'); //кнопка открытия попапа профиля
+const closePopupProfileBtn = popupProfile.querySelector('.popup__close-icon'); //кнопка закрытия попапа профиля
+const popupAddImg = document.querySelector('.popup-addimg'); //попап добаления картинок
 const openPopupImgBtn = document.querySelector('.profile__add-btn'); //кнопка открытия попапа добавления картинок
-const closePopupProfileBtn = document.querySelector(
-  '.popup__close_profile-popup'
-); //кнопка закрытия попапа профиля
-const closePopupImgBtn = document.querySelector('.popup__close_add-img-popup'); //кнопка закрытия попапа добавления картинок
-const closePopupImage = document.querySelector(
-  '.popup__close_opened-img-popup'
-);
+const closePopupImgBtn = popupAddImg.querySelector('.popup__close-icon'); //кнопка закрытия попапа добавления картинок
+const popupImage = document.querySelector('.popup_content_img'); //Попап просмотра картинки
+const closePopupImage = popupImage.querySelector('.popup__close-icon'); //Кнопка закрытия просмотра картинки
 const formProfileElement = document.querySelector('.popup__form_profile'); //выбираем форму редактирования профиля
 const formNameInput = formProfileElement.querySelector(
   '.popup__item_type_user-name'
