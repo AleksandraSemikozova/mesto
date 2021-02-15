@@ -33,11 +33,10 @@ const elements = [
 
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
-const popup = document.querySelector('.popup'); //попап
-const popupProfile = document.querySelector('.popup-profile'); //попап профиля
+const popupProfile = document.querySelector('.popup_content_profile'); //попап профиля
 const openPopupProfileBtn = document.querySelector('.profile__edit-btn'); //кнопка открытия попапа профиля
 const closePopupProfileBtn = popupProfile.querySelector('.popup__close-icon'); //кнопка закрытия попапа профиля
-const popupAddImg = document.querySelector('.popup-addimg'); //попап добаления картинок
+const popupAddImg = document.querySelector('.popup_content_addimg'); //попап добаления картинок
 const openPopupImgBtn = document.querySelector('.profile__add-btn'); //кнопка открытия попапа добавления картинок
 const closePopupImgBtn = popupAddImg.querySelector('.popup__close-icon'); //кнопка закрытия попапа добавления картинок
 const popupImage = document.querySelector('.popup_content_img'); //Попап просмотра картинки
@@ -70,7 +69,7 @@ function render() {
   elementsContainer.append(...elementsList);
 }
 
-function addElement(element) {
+function createElement(element) {
   const newElement = templateElement.content.cloneNode(true);
   const newElementName = newElement.querySelector('.element__text');
   const newElementImg = newElement.querySelector('.element__img');
@@ -116,17 +115,17 @@ function addNewElement(evt) {
   const imgName = formNameImg.value; //Название картинки = знаение инпута
   const imgLink = formLinkImg.value; //Ссылка на картинку из инпута
 
-  elementsContainer.prepend(addElement({ name: imgName, link: imgLink })); //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
+  elementsContainer.prepend(createElement({ name: imgName, link: imgLink })); //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
   formNameImg.value = ''; //Обнуляем поле ввода
   formLinkImg.value = '';
   closePopup(popupAddImg);
 }
 
-function submitFormHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = formNameInput.value; //Берем значение из инпута и вставляем в профиль (имя пользователя)
   profileJobElement.textContent = formJobInput.value; //Значение инпута в профиль (деятельность)
-  closePopup(popup); //Закрываем попап
+  closePopup(popupProfile); //Закрываем попап
 }
 
 openPopupProfileBtn.addEventListener('click', () => {
@@ -145,5 +144,5 @@ closePopupImgBtn.addEventListener('click', () => {
   closePopup(popupAddImg);
 });
 
-formProfileElement.addEventListener('submit', submitFormHandler);
+formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 formImgElement.addEventListener('submit', addNewElement);
