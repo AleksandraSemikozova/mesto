@@ -1,36 +1,3 @@
-const elements = [
-  {
-    name: 'Архыз',
-    link:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    name: 'Челябинская область',
-    link:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    name: 'Иваново',
-    link:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    name: 'Камчатка',
-    link:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    name: 'Холмогорский район',
-    link:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    name: 'Байкал',
-    link:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  },
-];
-
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
 const popupProfile = document.querySelector('.popup_content_profile'); //попап профиля
@@ -53,6 +20,8 @@ const profileJobElement = document.querySelector('.profile__subtitle'); //дея
 const formImgElement = document.querySelector('.popup__form_img'); //Выбираем форму добавления картинок
 const formNameImg = formImgElement.querySelector('.popup__item_type_img-name'); //поле ввода названия картинки
 const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); //поле ввода ссылки на картинку
+const imageElement = document.querySelector('.popup__img');
+const imageTitle = document.querySelector('.popup__img-title');
 
 // Функция открывает попап
 const openPopup = (popup) => {
@@ -65,7 +34,7 @@ const closePopup = (popup) => {
 };
 
 function render() {
-  const elementsList = elements.map(addElement);
+  const elementsList = elements.map(createElement);
   elementsContainer.append(...elementsList);
 }
 
@@ -89,19 +58,12 @@ function createElement(element) {
       event.target.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
     });
 
-  const imageElement = document.querySelector('.popup__img');
-  const imageTitle = document.querySelector('.popup__img-title');
-
   //Отрытие картинки
   newElementImg.addEventListener('click', () => {
     openPopup(popupImage);
     imageElement.src = newElementImg.src;
     imageElement.alt = newElementImg.alt;
     imageTitle.textContent = newElementName.textContent;
-  });
-
-  closePopupImage.addEventListener('click', () => {
-    closePopup(popupImage);
   });
 
   return newElement;
@@ -112,10 +74,13 @@ render();
 function addNewElement(evt) {
   evt.preventDefault();
 
-  const imgName = formNameImg.value; //Название картинки = знаение инпута
-  const imgLink = formLinkImg.value; //Ссылка на картинку из инпута
-
-  elementsContainer.prepend(createElement({ name: imgName, link: imgLink })); //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
+  //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
+  elementsContainer.prepend(
+    createElement({
+      name: formNameImg.value,
+      link: formLinkImg.value,
+    })
+  );
   formNameImg.value = ''; //Обнуляем поле ввода
   formLinkImg.value = '';
   closePopup(popupAddImg);
@@ -142,6 +107,9 @@ closePopupProfileBtn.addEventListener('click', () => {
 });
 closePopupImgBtn.addEventListener('click', () => {
   closePopup(popupAddImg);
+});
+closePopupImage.addEventListener('click', () => {
+  closePopup(popupImage);
 });
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
