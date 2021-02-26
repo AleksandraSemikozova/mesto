@@ -1,5 +1,6 @@
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
+const overlay = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_content_profile'); //попап профиля
 const openPopupProfileBtn = document.querySelector('.profile__edit-btn'); //кнопка открытия попапа профиля
 const closePopupProfileBtn = popupProfile.querySelector('.popup__close-icon'); //кнопка закрытия попапа профиля
@@ -81,8 +82,7 @@ function addNewElement(evt) {
       link: formLinkImg.value,
     })
   );
-  formNameImg.value = ''; //Обнуляем поле ввода
-  formLinkImg.value = '';
+  formImgElement.reset(); //Обнуляем поле ввода
   closePopup(popupAddImg);
 }
 

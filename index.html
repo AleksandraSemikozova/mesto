@@ -72,23 +72,38 @@
           action="#"
           name="popup-profile"
           class="popup__form popup__form_profile"
+          novalidate
         >
           <h2 class="popup__title">Редактировать профиль</h2>
+
           <fieldset class="popup__input-container">
-            <input
-              type="text"
-              class="popup__item popup__item_type_user-name"
-              name="usre-name"
-              value=""
-              placeholder="Жак-Ив Кусто"
-            />
-            <input
-              type="text"
-              class="popup__item popup__item_type_user-job"
-              name="user-job"
-              value=""
-              placeholder="Исследователь океана"
-            />
+            <label>
+              <input
+                type="text"
+                class="popup__item popup__item_type_user-name"
+                name="user-name"
+                value=""
+                placeholder="Имя"
+                minlength="2"
+                maxlength="40"
+                required
+              />
+              <span class="popup__item-error"></span>
+            </label>
+
+            <label>
+              <input
+                type="text"
+                class="popup__item popup__item_type_user-job"
+                name="user-job"
+                value=""
+                placeholder="О себе"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="popup__item-error"></span>
+            </label>
           </fieldset>
           <button
             type="submit"
@@ -112,23 +127,35 @@
           action="#"
           name="popup-add-img"
           class="popup__form popup__form_img"
+          novalidate
         >
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__input-container">
-            <input
-              type="text"
-              class="popup__item popup__item_type_img-name"
-              name="img-name"
-              value=""
-              placeholder="Название"
-            />
-            <input
-              type="text"
-              class="popup__item popup__item_type_img-link"
-              name="img-link"
-              value=""
-              placeholder="Ссылка на картинку"
-            />
+            <label>
+              <input
+                type="text"
+                class="popup__item popup__item_type_img-name"
+                name="img-name"
+                value=""
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="popup__item-error"></span>
+            </label>
+
+            <label>
+              <input
+                type="url"
+                class="popup__item popup__item_type_img-link"
+                name="img-link"
+                value=""
+                placeholder="Ссылка на картинку"
+                required
+              />
+              <span class="popup__item-error"></span>
+            </label>
           </fieldset>
           <button
             type="submit"
