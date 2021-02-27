@@ -3,6 +3,7 @@
   background-color: #fff;
   opacity: 0.2;
   color: #000;
+  pointer-events: none;
 }
 
 .popup__btn_inactive:hover {
