@@ -6,6 +6,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 430px;
   max-width: 430px;
   background-color: #fff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
