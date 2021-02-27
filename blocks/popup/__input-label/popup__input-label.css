@@ -1,0 +1,5 @@
+.popup__input-label {
+  display: flex;
+  position: relative;
+  margin-bottom: 31px;
+}

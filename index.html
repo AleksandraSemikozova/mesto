@@ -77,9 +77,10 @@
           <h2 class="popup__title">Редактировать профиль</h2>
 
           <fieldset class="popup__input-container">
-            <label>
+            <label class="popup__input-label">
               <input
                 type="text"
+                id="name-item"
                 class="popup__item popup__item_type_user-name"
                 name="user-name"
                 value=""
@@ -88,12 +89,13 @@
                 maxlength="40"
                 required
               />
-              <span class="popup__item-error"></span>
+              <span class="popup__item_error name-item-error"></span>
             </label>
 
-            <label>
+            <label class="popup__input-label">
               <input
                 type="text"
+                id="user-job"
                 class="popup__item popup__item_type_user-job"
                 name="user-job"
                 value=""
@@ -102,7 +104,7 @@
                 maxlength="200"
                 required
               />
-              <span class="popup__item-error"></span>
+              <span class="popup__item_error user-job-error"></span>
             </label>
           </fieldset>
           <button
@@ -131,9 +133,10 @@
         >
           <h2 class="popup__title">Новое место</h2>
           <fieldset class="popup__input-container">
-            <label>
+            <label class="popup__input-label">
               <input
                 type="text"
+                id="img-name"
                 class="popup__item popup__item_type_img-name"
                 name="img-name"
                 value=""
@@ -142,19 +145,20 @@
                 maxlength="30"
                 required
               />
-              <span class="popup__item-error"></span>
+              <span class="popup__item_error img-name-error"></span>
             </label>
 
-            <label>
+            <label class="popup__input-label">
               <input
                 type="url"
+                id="img-link"
                 class="popup__item popup__item_type_img-link"
                 name="img-link"
                 value=""
                 placeholder="Ссылка на картинку"
                 required
               />
-              <span class="popup__item-error"></span>
+              <span class="popup__item_error img-link-error"></span>
             </label>
           </fieldset>
           <button
@@ -178,5 +182,6 @@
 
     <script src="./js/initial-сards.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/validate.js"></script>
   </body>
 </html>

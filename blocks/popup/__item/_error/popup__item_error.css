@@ -4,5 +4,8 @@
   line-height: 1.2;
   color: #ff0000;
   display: flex;
+  margin-top: 5px;
   margin-bottom: 13px;
+  position: absolute;
+  top: 100%;
 }

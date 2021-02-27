@@ -112,5 +112,20 @@ closePopupImage.addEventListener('click', () => {
   closePopup(popupImage);
 });
 
+document.addEventListener('click', (evt) => {
+  if (evt.target === document.querySelector('.popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+});
+
+document.addEventListener('keydown', (evt) => {
+  if (
+    evt.key === 'Escape' &&
+    document.querySelector('.popup_opened') !== null
+  ) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+});
+
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 formImgElement.addEventListener('submit', addNewElement);
