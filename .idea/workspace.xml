@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="03114c04-d266-4e59-8def-5dbf7726fa54" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/blocks/popup/__input-label/popup__input-label.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/btn/btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/btn/btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/__img/element__img.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/__img/element__img.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/__like-btn/_active/element__like-btn_active.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/__like-btn/_active/element__like-btn_active.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/__like-btn/element__like-btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/__like-btn/element__like-btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/__remove-btn/element__remove-btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/__remove-btn/element__remove-btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/element/element.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/element/element.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/elements/elements.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/elements/elements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/footer/__text/footer__text.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/footer/__text/footer__text.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/footer/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/footer/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/header/__logo/header__logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/header/__logo/header__logo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/header/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/page/__container/page__container.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/page/__container/page__container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/page/page.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/page/page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__btn/_inactive/popup__btn_inactive.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__btn/_inactive/popup__btn_inactive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__btn/popup__btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__btn/popup__btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__close-icon/popup__close-icon.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__close-icon/popup__close-icon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__form/popup__form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__img-container/popup__img-container.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__img-container/popup__img-container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__img-title/popup__img-title.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__img-title/popup__img-title.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__img/popup__img.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__img/popup__img.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__input-container/popup__input-container.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__input-container/popup__input-container.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__item/_error/popup__item_error.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__item/_error/popup__item_error.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__item/_invalid/popup__item_invalid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__item/popup__item.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/_content_img/popup_content_img.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/_content_img/popup_content_img.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/_opened/popup_opened.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/_opened/popup_opened.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/profile/__avatar/profile__avatar.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__avatar/profile__avatar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/profile/__edit-btn/profile__edit-btn.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__edit-btn/profile__edit-btn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/profile/__info/profile__info.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__info/profile__info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/profile/__subtitle/profile__subtitle.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__subtitle/profile__subtitle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/profile/__title/profile__title.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/profile/__title/profile__title.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/inter.css" beforeDir="false" afterPath="$PROJECT_DIR$/fonts/inter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/add-button.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/add-button.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/edit-button.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/edit-button.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/heart-active.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/heart-active.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/heart.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/heart.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo-black.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/logo-black.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo-white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/logo-white.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/remove-button.svg" beforeDir="false" afterPath="$PROJECT_DIR$/images/remove-button.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/initial-сards.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/initial-сards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/normalize.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1p16OAKm68SQp38WsTS6M517gOU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/mesto/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="03114c04-d266-4e59-8def-5dbf7726fa54" name="Default Changelist" comment="" />
+      <created>1614338214108</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614338214108</updated>
+      <workItem from="1614338215567" duration="7904000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="397" y="183" key="SettingsEditor" timestamp="1614374826142">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state x="397" y="183" key="SettingsEditor/0.23.1792.1043@0.23.1792.1043" timestamp="1614374826142" />
+    <state x="597" y="285" width="598" height="518" key="find.popup" timestamp="1614376155169">
+      <screen x="0" y="23" width="1792" height="1043" />
+    </state>
+    <state x="597" y="285" width="598" height="518" key="find.popup/0.23.1792.1043@0.23.1792.1043" timestamp="1614376155169" />
+  </component>
+</project>
