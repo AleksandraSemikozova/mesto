@@ -1,6 +1,5 @@
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
-const overlay = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_content_profile'); //попап профиля
 const openPopupProfileBtn = document.querySelector('.profile__edit-btn'); //кнопка открытия попапа профиля
 const closePopupProfileBtn = popupProfile.querySelector('.popup__close-icon'); //кнопка закрытия попапа профиля
@@ -24,51 +23,65 @@ const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); 
 const imageElement = document.querySelector('.popup__img');
 const imageTitle = document.querySelector('.popup__img-title');
 
+const closePopupEsc = function (event) {
+  if (
+    event.key === 'Escape' &&
+    document.querySelector('.popup_opened') !== null
+  ) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
+
 // Функция открывает попап
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
 };
 
 //Функция закрывает попап
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 function render() {
-  const elementsList = elements.map(createElement);
+  const elementsList = elements.map(getCardElement);
   elementsContainer.append(...elementsList);
 }
 
-function createElement(element) {
+const getCardElement = (element) => {
   const newElement = templateElement.content.cloneNode(true);
+  const newElementDeleteBtn = newElement.querySelector('.element__remove-btn');
+  const newElementLikeBtn = newElement.querySelector('.element__like-btn');
   const newElementName = newElement.querySelector('.element__text');
   const newElementImg = newElement.querySelector('.element__img');
   newElementName.textContent = element.name;
   newElementImg.src = element.link;
   newElementImg.alt = element.name;
 
-  newElement
-    .querySelector('.element__remove-btn') //Выбираем кнопку "удалить"
-    .addEventListener('click', function (event) {
-      event.target.closest('.element').remove(); //Повесили слушатель с функцией удалять элемент на который был клик
-    });
-
-  newElement //Поставить лайк
-    .querySelector('.element__like-btn') //Выбираем кнопку "лайк"
-    .addEventListener('click', function (event) {
-      event.target.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
-    });
-
-  //Отрытие картинки
-  newElementImg.addEventListener('click', () => {
-    openPopup(popupImage);
-    imageElement.src = newElementImg.src;
-    imageElement.alt = newElementImg.alt;
-    imageTitle.textContent = newElementName.textContent;
-  });
+  newElementDeleteBtn.addEventListener('click', handleDeleteCard);
+  newElementLikeBtn.addEventListener('click', handleLikeIcon);
+  newElementImg.addEventListener('click', () =>
+    handlePreviewPicture(newElementImg, newElementName)
+  );
 
   return newElement;
-}
+};
+
+const handleDeleteCard = function (event) {
+  event.target.closest('.element').remove(); //Повесили слушатель с функцией удалять элемент на который был клик
+};
+
+const handleLikeIcon = (event) => {
+  event.target.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
+};
+
+const handlePreviewPicture = (newElementImg, newElementName) => {
+  openPopup(popupImage);
+  imageElement.src = newElementImg.src;
+  imageElement.alt = newElementImg.alt;
+  imageTitle.textContent = newElementName.textContent;
+};
 
 render();
 
@@ -77,7 +90,7 @@ function addNewElement(evt) {
 
   //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
   elementsContainer.prepend(
-    createElement({
+    getCardElement({
       name: formNameImg.value,
       link: formLinkImg.value,
     })
@@ -98,8 +111,12 @@ openPopupProfileBtn.addEventListener('click', () => {
   formNameInput.value = profileNameElement.textContent;
   formJobInput.value = profileJobElement.textContent;
 });
+
 openPopupImgBtn.addEventListener('click', () => {
   openPopup(popupAddImg);
+  const inputImgList = Array.from(popupAddImg.querySelectorAll('.popup__item'));
+  const submitImgBtn = popupAddImg.querySelector('.popup__btn');
+  toggleButtonState(inputImgList, submitImgBtn, 'popup__btn_inactive');
 });
 
 closePopupProfileBtn.addEventListener('click', () => {
@@ -114,15 +131,6 @@ closePopupImage.addEventListener('click', () => {
 
 document.addEventListener('click', (evt) => {
   if (evt.target === document.querySelector('.popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-});
-
-document.addEventListener('keydown', (evt) => {
-  if (
-    evt.key === 'Escape' &&
-    document.querySelector('.popup_opened') !== null
-  ) {
     closePopup(document.querySelector('.popup_opened'));
   }
 });
