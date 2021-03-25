@@ -1,3 +1,6 @@
+import { elements } from './initial-сards.js';
+import { FormValidator } from './FormValidator.js';
+
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
 const popupProfile = document.querySelector('.popup_content_profile'); //попап профиля
@@ -22,6 +25,18 @@ const formNameImg = formImgElement.querySelector('.popup__item_type_img-name'); 
 const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); //поле ввода ссылки на картинку
 const imageElement = document.querySelector('.popup__img');
 const imageTitle = document.querySelector('.popup__img-title');
+const validConfig = {
+  inputSelector: '.popup__item',
+  submitButtonSelector: '.popup__btn',
+  inactiveButtonClass: 'popup__btn_inactive',
+  inputErrorClass: 'popup__item_type_error',
+  errorClass: 'popup__error_visible',
+};
+const formProfileValidation = new FormValidator(
+  validConfig,
+  formProfileElement
+);
+const formImgValidation = new FormValidator(validConfig, formImgElement);
 
 const closePopupEsc = function (event) {
   if (
@@ -116,7 +131,6 @@ openPopupImgBtn.addEventListener('click', () => {
   openPopup(popupAddImg);
   const inputImgList = Array.from(popupAddImg.querySelectorAll('.popup__item'));
   const submitImgBtn = popupAddImg.querySelector('.popup__btn');
-  toggleButtonState(inputImgList, submitImgBtn, 'popup__btn_inactive');
 });
 
 closePopupProfileBtn.addEventListener('click', () => {
@@ -137,3 +151,5 @@ document.addEventListener('click', (evt) => {
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 formImgElement.addEventListener('submit', addNewElement);
+formProfileValidation.enableValidation();
+formImgValidation.enableValidation();
