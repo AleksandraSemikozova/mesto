@@ -1,4 +1,5 @@
 import { elements } from './initial-сards.js';
+import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
@@ -23,8 +24,7 @@ const profileJobElement = document.querySelector('.profile__subtitle'); //дея
 const formImgElement = document.querySelector('.popup__form_img'); //Выбираем форму добавления картинок
 const formNameImg = formImgElement.querySelector('.popup__item_type_img-name'); //поле ввода названия картинки
 const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); //поле ввода ссылки на картинку
-const imageElement = document.querySelector('.popup__img');
-const imageTitle = document.querySelector('.popup__img-title');
+
 const validConfig = {
   inputSelector: '.popup__item',
   submitButtonSelector: '.popup__btn',
@@ -59,53 +59,27 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closePopupEsc);
 };
 
+//добавляет initial-cards на страницу
 function render() {
   const elementsList = elements.map(getCardElement);
   elementsContainer.append(...elementsList);
 }
 
-const getCardElement = (element) => {
-  const newElement = templateElement.content.cloneNode(true);
-  const newElementDeleteBtn = newElement.querySelector('.element__remove-btn');
-  const newElementLikeBtn = newElement.querySelector('.element__like-btn');
-  const newElementName = newElement.querySelector('.element__text');
-  const newElementImg = newElement.querySelector('.element__img');
-  newElementName.textContent = element.name;
-  newElementImg.src = element.link;
-  newElementImg.alt = element.name;
-
-  newElementDeleteBtn.addEventListener('click', handleDeleteCard);
-  newElementLikeBtn.addEventListener('click', handleLikeIcon);
-  newElementImg.addEventListener('click', () =>
-    handlePreviewPicture(newElementImg, newElementName)
-  );
-
+function getCardElement(element) {
+  const card = new Card(element, templateElement);
+  const newElement = card.generateCard();
   return newElement;
-};
-
-const handleDeleteCard = function (event) {
-  event.target.closest('.element').remove(); //Повесили слушатель с функцией удалять элемент на который был клик
-};
-
-const handleLikeIcon = (event) => {
-  event.target.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
-};
-
-const handlePreviewPicture = (newElementImg, newElementName) => {
-  openPopup(popupImage);
-  imageElement.src = newElementImg.src;
-  imageElement.alt = newElementImg.alt;
-  imageTitle.textContent = newElementName.textContent;
-};
+}
 
 render();
 
+// Добавляет новую картинку на страницу
 function addNewElement(evt) {
   evt.preventDefault();
 
   //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
   elementsContainer.prepend(
-    getCardElement({
+    generateCard({
       name: formNameImg.value,
       link: formLinkImg.value,
     })
@@ -114,6 +88,7 @@ function addNewElement(evt) {
   closePopup(popupAddImg);
 }
 
+// обрабатывает отправку формы профиля
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = formNameInput.value; //Берем значение из инпута и вставляем в профиль (имя пользователя)

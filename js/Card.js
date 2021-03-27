@@ -1,84 +1,84 @@
-class Card {
-  constructor() {}
+const imageElement = document.querySelector('.popup__img');
+const imageTitle = document.querySelector('.popup__img-title');
+
+export class Card {
+  constructor(element, cardSelector) {
+    this._cardSelector = cardSelector;
+    this._name = element.name;
+    this._alt = element.name;
+    this._link = element.link;
+  }
+
+  // Клонирует разметку картинки
+  _getTemplate() {
+    const newElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector('.element')
+      .cloneNode(true);
+
+    return newElement;
+  }
+
+  //Слушатели
+  _setEventListeners() {
+    this._element
+      .querySelector('.element__remove-btn')
+      .addEventListener('click', this._handleDeleteCard);
+
+    this._element
+      .querySelector('.element__like-btn')
+      .addEventListener('click', this._handleLikeIcon);
+
+    this._newElementImg.addEventListener('click', this._handlePreviewPicture);
+  }
+
+  // Удаление картинки
+  _handleDeleteCard = () => {
+    this._element.remove(); //Повесили слушатель с функцией удалять элемент на который был клик
+  };
+
+  // Ставит "Лайк"
+  _handleLikeIcon = () => {
+    this._element.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
+  };
+
+  // Открыть картинку
+  _handlePreviewPicture = () => {
+    openPopup(popupImage);
+    imageElement.src = this._link;
+    imageElement.alt = this._alt;
+    imageTitle.textContent = this._name;
+  };
+
+  // Создает новую картинку
+  generateCard() {
+    this._element = this._getTemplate();
+    this._newElementImg = this._element.querySelector('.element__img');
+    this._element.querySelector('.element__text').textContent = this._name;
+    this._newElementImg.alt = this._name;
+    this._newElementImg.src = this._link;
+
+    this._setEventListeners();
+    return this._element;
+  }
+
+  // Создает новую картинку
+  // const getCardElement = (element) => {
+  //   const newElement = templateElement.content.cloneNode(true);
+  //   const newElementDeleteBtn = newElement.querySelector('.element__remove-btn');
+  //   const newElementLikeBtn = newElement.querySelector('.element__like-btn');
+  //   const newElementName = newElement.querySelector('.element__text');
+  //   const newElementImg = newElement.querySelector('.element__img');
+  //   newElementName.textContent = element.name;
+  //   newElementImg.src = element.link;
+  //   newElementImg.alt = element.name;
+
+  //   newElementDeleteBtn.addEventListener('click', handleDeleteCard);
+  //   newElementLikeBtn.addEventListener('click', handleLikeIcon);
+  //   newElementImg.addEventListener('click', () =>
+  //     handlePreviewPicture(newElementImg, newElementName)
+  //   );
+
+  //   return newElement;
+  // };
 }
-
-// export class FormValidator {
-//   constructor(validationConfig, form) {
-//     this._inputSelector = validationConfig.inputSelector;
-//     this._submitButtonSelector = validationConfig.submitButtonSelector;
-//     this._inactiveButtonClass = validationConfig.inactiveButtonClass;
-//     this._inputErrorClass = validationConfig.inputErrorClass;
-//     this._errorClass = validationConfig.errorClass;
-//     this._form = form;
-//     this._inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
-//   }
-// _hasInvalidInput() {
-//   return this._inputs.some((inputElement) => {
-//     return !inputElement.validity.valid;
-//   });
-// }
-//Проверка введеных данных на валидность
-// _showInputError() {
-//   this._inputElement.classList.add(this._inputErrorClass);
-//   this._errorElement.classList.add(this._errorClass);
-//   this._errorElement.textContent = this._inputElement.validationMessage;
-// }
-// Показываем ошибку о неправильном заполнении
-// _hideInputError(inputElement) {
-//   this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
-//   inputElement.classList.remove(this._inputErrorClass);
-//   this._errorElement.classList.remove(this._errorClass);
-//   this._errorElement.textContent = '';
-// }
-// Скрываем ошибку о неправильном заполнении
-// _setEventListeners() {
-//   this._buttonElement = this._form.querySelector(this._submitButtonSelector);
-//   this._toggleButtonState();
-//   this._inputs.forEach((inputElement) => {
-//     inputElement.addEventListener('input', () => {
-//       this._formValidation(inputElement);
-//       this._toggleButtonState();
-//     });
-//   });
-// }
-//
-// _formValidation(inputElement) {
-//   this._inputElement = inputElement;
-//   this._errorElement = this._form.querySelector(
-//     `.${this._inputElement.id}-error`
-//   );
-//   if (!this._inputElement.validity.valid) {
-//     this._showInputError();
-//   } else {
-//     this._hideInputError(inputElement);
-//   }
-// }
-// Проверяем форму на валидность
-// disabledSubmit() {
-//   this._buttonElement.classList.add(this._inactiveButtonClass);
-//   this._buttonElement.setAttribute('disabled', true);
-// } // Блокируем клавишу при невалдином поле
-// _toggleButtonState() {
-//   if (this._hasInvalidInput()) {
-//     this.disabledSubmit();
-//   } else {
-//     this._buttonElement.classList.remove(this._inactiveButtonClass);
-//     this._buttonElement.removeAttribute('disabled');
-//   }
-// }
-// Отключаем блокировку клавиши
-
-//   enableValidation() {
-//     this._setEventListeners();
-//     this._form.addEventListener('submit', (evt) => {
-//       evt.preventDefault();
-//       this._toggleButtonState();
-//     });
-//   }
-//   clearValidation() {
-//     this._inputs.forEach((form) => {
-//       this._hideInputError(form);
-//     });
-//     this._toggleButtonState();
-//   } // Очистка полей ввода перед открытием
-// }
