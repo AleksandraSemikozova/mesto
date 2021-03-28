@@ -1,12 +1,30 @@
+const openPopup = (popup) => {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+};
+const closePopup = (popup) => {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+};
+const closePopupEsc = function (event) {
+  if (
+    event.key === 'Escape' &&
+    document.querySelector('.popup_opened') !== null
+  ) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
+
+const popupImage = document.querySelector('.popup_content_img');
 const imageElement = document.querySelector('.popup__img');
 const imageTitle = document.querySelector('.popup__img-title');
 
 export class Card {
-  constructor(element, cardSelector) {
+  constructor(data, cardSelector) {
     this._cardSelector = cardSelector;
-    this._name = element.name;
-    this._alt = element.name;
-    this._link = element.link;
+    this._name = data.name;
+    this._alt = data.name;
+    this._link = data.link;
   }
 
   // Клонирует разметку картинки
@@ -39,7 +57,10 @@ export class Card {
 
   // Ставит "Лайк"
   _handleLikeIcon = () => {
-    this._element.classList.toggle('element__like-btn_active'); // Слушатель с функцией менять внешний вид кнопки на которой был клик
+    this._element
+      .querySelector('.element__like-btn')
+      .classList.toggle('element__like-btn_active');
+    // Слушатель с функцией менять внешний вид кнопки на которой был клик
   };
 
   // Открыть картинку
@@ -61,24 +82,4 @@ export class Card {
     this._setEventListeners();
     return this._element;
   }
-
-  // Создает новую картинку
-  // const getCardElement = (element) => {
-  //   const newElement = templateElement.content.cloneNode(true);
-  //   const newElementDeleteBtn = newElement.querySelector('.element__remove-btn');
-  //   const newElementLikeBtn = newElement.querySelector('.element__like-btn');
-  //   const newElementName = newElement.querySelector('.element__text');
-  //   const newElementImg = newElement.querySelector('.element__img');
-  //   newElementName.textContent = element.name;
-  //   newElementImg.src = element.link;
-  //   newElementImg.alt = element.name;
-
-  //   newElementDeleteBtn.addEventListener('click', handleDeleteCard);
-  //   newElementLikeBtn.addEventListener('click', handleLikeIcon);
-  //   newElementImg.addEventListener('click', () =>
-  //     handlePreviewPicture(newElementImg, newElementName)
-  //   );
-
-  //   return newElement;
-  // };
 }

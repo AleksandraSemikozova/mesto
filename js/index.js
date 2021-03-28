@@ -59,27 +59,11 @@ const closePopup = (popup) => {
   document.removeEventListener('keydown', closePopupEsc);
 };
 
-//добавляет initial-cards на страницу
-function render() {
-  const elementsList = elements.map(getCardElement);
-  elementsContainer.append(...elementsList);
-}
-
-function getCardElement(element) {
-  const card = new Card(element, templateElement);
-  const newElement = card.generateCard();
-  return newElement;
-}
-
-render();
-
-// Добавляет новую картинку на страницу
-function addNewElement(evt) {
+function handleImgFormSubmit(evt) {
   evt.preventDefault();
 
-  //Выполняем функцию добавления нового элемента с новыми значениями (введенными пользователем)
   elementsContainer.prepend(
-    generateCard({
+    getCardElement({
       name: formNameImg.value,
       link: formLinkImg.value,
     })
@@ -87,6 +71,19 @@ function addNewElement(evt) {
   formImgElement.reset(); //Обнуляем поле ввода
   closePopup(popupAddImg);
 }
+
+function render() {
+  const elementsList = elements.map(getCardElement);
+  elementsContainer.append(...elementsList);
+}
+
+const getCardElement = (item) => {
+  const card = new Card(item, '.template-element');
+  const newElement = card.generateCard();
+
+  return newElement;
+};
+render();
 
 // обрабатывает отправку формы профиля
 function handleProfileFormSubmit(evt) {
@@ -100,12 +97,12 @@ openPopupProfileBtn.addEventListener('click', () => {
   openPopup(popupProfile);
   formNameInput.value = profileNameElement.textContent;
   formJobInput.value = profileJobElement.textContent;
+  formProfileValidation.clearValidation();
 });
 
 openPopupImgBtn.addEventListener('click', () => {
   openPopup(popupAddImg);
-  const inputImgList = Array.from(popupAddImg.querySelectorAll('.popup__item'));
-  const submitImgBtn = popupAddImg.querySelector('.popup__btn');
+  formImgValidation.clearValidation();
 });
 
 closePopupProfileBtn.addEventListener('click', () => {
@@ -125,6 +122,6 @@ document.addEventListener('click', (evt) => {
 });
 
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-formImgElement.addEventListener('submit', addNewElement);
+formImgElement.addEventListener('submit', handleImgFormSubmit);
 formProfileValidation.enableValidation();
 formImgValidation.enableValidation();
