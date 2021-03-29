@@ -1,21 +1,5 @@
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEsc);
-};
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEsc);
-};
-const closePopupEsc = function (event) {
-  if (
-    event.key === 'Escape' &&
-    document.querySelector('.popup_opened') !== null
-  ) {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-};
+import { openPopup } from './constants.js';
 
-const popupImage = document.querySelector('.popup_content_img');
 const imageElement = document.querySelector('.popup__img');
 const imageTitle = document.querySelector('.popup__img-title');
 

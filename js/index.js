@@ -1,3 +1,4 @@
+import { openPopup, closePopup, popupImage, validConfig } from './constants.js';
 import { elements } from './initial-сards.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
@@ -10,7 +11,7 @@ const closePopupProfileBtn = popupProfile.querySelector('.popup__close-icon'); /
 const popupAddImg = document.querySelector('.popup_content_addimg'); //попап добаления картинок
 const openPopupImgBtn = document.querySelector('.profile__add-btn'); //кнопка открытия попапа добавления картинок
 const closePopupImgBtn = popupAddImg.querySelector('.popup__close-icon'); //кнопка закрытия попапа добавления картинок
-const popupImage = document.querySelector('.popup_content_img'); //Попап просмотра картинки
+//Попап просмотра картинки
 const closePopupImage = popupImage.querySelector('.popup__close-icon'); //Кнопка закрытия просмотра картинки
 const formProfileElement = document.querySelector('.popup__form_profile'); //выбираем форму редактирования профиля
 const formNameInput = formProfileElement.querySelector(
@@ -25,39 +26,11 @@ const formImgElement = document.querySelector('.popup__form_img'); //Выбир�
 const formNameImg = formImgElement.querySelector('.popup__item_type_img-name'); //поле ввода названия картинки
 const formLinkImg = formImgElement.querySelector('.popup__item_type_img-link'); //поле ввода ссылки на картинку
 
-const validConfig = {
-  inputSelector: '.popup__item',
-  submitButtonSelector: '.popup__btn',
-  inactiveButtonClass: 'popup__btn_inactive',
-  inputErrorClass: 'popup__item_type_error',
-  errorClass: 'popup__error_visible',
-};
 const formProfileValidation = new FormValidator(
   validConfig,
   formProfileElement
 );
 const formImgValidation = new FormValidator(validConfig, formImgElement);
-
-const closePopupEsc = function (event) {
-  if (
-    event.key === 'Escape' &&
-    document.querySelector('.popup_opened') !== null
-  ) {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-};
-
-// Функция открывает попап
-const openPopup = (popup) => {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupEsc);
-};
-
-//Функция закрывает попап
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupEsc);
-};
 
 function handleImgFormSubmit(evt) {
   evt.preventDefault();
