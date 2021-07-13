@@ -1,7 +1,8 @@
-import { openPopup, closePopup, popupImage, validConfig } from './constants.js';
-import { elements } from './initial-сards.js';
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import { openPopup, closePopup, popupImage, validConfig } from '../utils/constants.js';
+import { elements } from '../components/initial-cards.js';
+import Card from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import Section from '../components/Section.js'
 
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
