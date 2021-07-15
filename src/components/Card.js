@@ -1,7 +1,4 @@
-import { popupImage } from '../utils/constants.js';
-
-const imageElement = document.querySelector('.popup__img');
-const imageTitle = document.querySelector('.popup__img-title');
+import { popupImage, imageElement, imageTitle } from '../utils/constants.js';
 
 export default class Card {
   constructor(data, cardSelector) {
