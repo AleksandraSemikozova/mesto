@@ -3,6 +3,7 @@ import { elements } from '../components/initial-cards.js';
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import Section from '../components/Section.js'
+import Popup from '../components/Popup.js';
 
 const elementsContainer = document.querySelector('.elements'); //секция с картинками
 const templateElement = document.querySelector('.template-element'); //разметка для картинок, которая будет вставляться
@@ -75,7 +76,7 @@ openPopupProfileBtn.addEventListener('click', () => {
 });
 
 openPopupImgBtn.addEventListener('click', () => {
-  openPopup(popupAddImg);
+  open(popupAddImg);
   formImgValidation.clearValidation();
 });
 
