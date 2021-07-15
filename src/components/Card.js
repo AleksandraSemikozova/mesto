@@ -1,4 +1,4 @@
-import { openPopup, popupImage } from '../utils/constants.js';
+import { popupImage } from '../utils/constants.js';
 
 const imageElement = document.querySelector('.popup__img');
 const imageTitle = document.querySelector('.popup__img-title');
@@ -49,7 +49,7 @@ export default class Card {
 
   // Открыть картинку
   _handlePreviewPicture = () => {
-    openPopup(popupImage);
+    open(popupImage);
     imageElement.src = this._link;
     imageElement.alt = this._alt;
     imageTitle.textContent = this._name;

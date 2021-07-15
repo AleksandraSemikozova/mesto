@@ -1,4 +1,4 @@
-import { openPopup, closePopup, popupImage, validConfig } from '../utils/constants.js';
+import { popupImage, validConfig } from '../utils/constants.js';
 import { elements } from '../components/initial-cards.js';
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
