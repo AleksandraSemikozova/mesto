@@ -1,11 +1,10 @@
-import { popupImage, imageElement, imageTitle } from '../utils/constants.js';
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._alt = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
   }
 
   // Клонирует разметку картинки
@@ -28,29 +27,22 @@ export default class Card {
       .querySelector('.element__like-btn')
       .addEventListener('click', this._handleLikeIcon);
 
-    this._newElementImg.addEventListener('click', this._handlePreviewPicture);
+    this._newElementImg.addEventListener('click', () =>
+      this._handlePreviewPicture()
+    );
   }
 
-  // Удаление картинки
-  _handleDeleteCard = () => {
-    this._element.remove(); //Cлушатель с функцией удалять элемент на который был клик
-  };
+  _handleDeleteCard() {
+    this._element.remove();
+  }
 
-  // Ставит "Лайк"
-  _handleLikeIcon = () => {
-    this._element
-      .querySelector('.element__like-btn')
-      .classList.toggle('element__like-btn_active');
-    // Слушатель с функцией менять внешний вид кнопки на которой был клик
-  };
+  _handleLikeIcon() {
+    this.classList.toggle('element__like-btn_active');
+  }
 
-  // Открыть картинку
-  _handlePreviewPicture = () => {
-    open(popupImage);
-    imageElement.src = this._link;
-    imageElement.alt = this._alt;
-    imageTitle.textContent = this._name;
-  };
+  _handlePreviewPicture() {
+    this._handleCardClick(this._name, this._link);
+  }
 
   // Создает новую картинку
   generateCard() {

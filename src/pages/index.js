@@ -1,5 +1,3 @@
-import { popupImage, validConfig } from '../utils/constants.js';
-import { elements } from '../components/initial-cards.js';
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -7,8 +5,30 @@ import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
-
-
+import {
+  closePopupImage,
+  closePopupImgBtn,
+  closePopupProfileBtn,
+  elementsContainer,
+  EscKey,
+  formImgElement,
+  formJobInput,
+  formLinkImg,
+  formNameImg,
+  formNameInput,
+  formProfileElement,
+  imageElement,
+  imageTitle,
+  openPopupImgBtn,
+  openPopupProfileBtn,
+  popupAddImg,
+  popupImage,
+  popupProfile,
+  profileSelectors,
+  templateElement,
+  validConfig,
+} from '../utils/constants.js';
+import { elements } from '../utils/initial-cards.js';
 
 const formProfileValidation = new FormValidator(
   validConfig,
@@ -17,8 +37,6 @@ const formProfileValidation = new FormValidator(
 const formImgValidation = new FormValidator(validConfig, formImgElement);
 
 function handleImgFormSubmit(evt) {
-  evt.preventDefault();
-
   elementsContainer.prepend(
     getCardElement({
       name: formNameImg.value,
@@ -26,59 +44,75 @@ function handleImgFormSubmit(evt) {
     })
   );
   formImgElement.reset(); //Обнуляем поле ввода
-  closePopup(popupAddImg);
 }
 
-function render() {
-  const elementsList = elements.map(getCardElement);
-  elementsContainer.append(...elementsList);
-}
+// function render() {
+//   const elementsList = elements.map(getCardElement);
+//   elementsContainer.append(...elementsList);
+// }
 
 const getCardElement = (item) => {
-  const card = new Card(item, '.template-element');
+  const card = new Card(item, '.template-element', {
+    handleCardClick: (name, link) => {
+      popupWithImage.open(name, link);
+    },
+  });
+
   const newElement = card.generateCard();
 
   return newElement;
 };
-render();
+// render();
 
 // обрабатывает отправку формы профиля
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileSelectors.profileName.textContent = formNameInput.value; //Берем значение из инпута и вставляем в профиль (имя пользователя)
-  profileSelectors.profileJob.textContent = formJobInput.value; //Значение инпута в профиль (деятельность)
-  closePopup(popupProfile); //Закрываем попап
+function handleProfileFormSubmit() {
+  userInfo.setUserInfo(formNameInput.value, formJobInput.value);
 }
 
+const popupWithImage = new PopupWithImage(popupImage);
+popupWithImage.setEventListeners();
+
+const popupAddImage = new PopupWithForm({
+  popup: popupAddImg,
+  submitForm: handleImgFormSubmit,
+});
+popupAddImage.setEventListeners();
+
+const popupEditProfile = new PopupWithForm({
+  popup: popupProfile,
+  submitForm: handleProfileFormSubmit,
+});
+popupEditProfile.setEventListeners();
+
 openPopupProfileBtn.addEventListener('click', () => {
-  openPopup(popupProfile);
-  formNameInput.value = profileNameElement.textContent;
-  formJobInput.value = profileJobElement.textContent;
+  popupEditProfile.open();
+  const userInfoData = userInfo.getUserInfo();
+  formNameInput.value = userInfoData.name;
+  formJobInput.value = userInfoData.job;
   formProfileValidation.clearValidation();
 });
 
 openPopupImgBtn.addEventListener('click', () => {
-  open(popupAddImg);
+  popupAddImage.open();
   formImgValidation.clearValidation();
 });
 
-closePopupProfileBtn.addEventListener('click', () => {
-  closePopup(popupProfile);
+const userInfo = new UserInfo({
+  profileName: profileSelectors.profileName,
+  profileJob: profileSelectors.profileJob,
 });
-closePopupImgBtn.addEventListener('click', () => {
-  closePopup(popupAddImg);
-});
-closePopupImage.addEventListener('click', () => {
-  closePopup(popupImage);
-});
+
+const section = new Section(
+  { items: elements, renderer: getCardElement },
+  '.elements'
+);
+section.rendererItems();
 
 document.addEventListener('click', (evt) => {
   if (evt.target === document.querySelector('.popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
+    evt.target.classList.remove('popup_opened');
   }
 });
 
-formProfileElement.addEventListener('submit', handleProfileFormSubmit);
-formImgElement.addEventListener('submit', handleImgFormSubmit);
 formProfileValidation.enableValidation();
 formImgValidation.enableValidation();

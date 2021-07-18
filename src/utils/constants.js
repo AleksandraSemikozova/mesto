@@ -37,4 +37,26 @@ const validConfig = {
   errorClass: 'popup__error_visible',
 };
 
-export { EscKey, popupImage, validConfig, imageTitle, imageElement };
+export {
+  EscKey,
+  popupImage,
+  elementsContainer,
+  templateElement,
+  popupProfile,
+  openPopupProfileBtn,
+  closePopupProfileBtn,
+  popupAddImg,
+  openPopupImgBtn,
+  closePopupImgBtn,
+  closePopupImage,
+  formProfileElement,
+  formNameInput,
+  formJobInput,
+  profileSelectors,
+  formImgElement,
+  formNameImg,
+  formLinkImg,
+  validConfig,
+  imageTitle,
+  imageElement,
+};
