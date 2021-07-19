@@ -21,7 +21,7 @@ export default class Card {
   _setEventListeners() {
     this._element
       .querySelector('.element__remove-btn')
-      .addEventListener('click', this._handleDeleteCard);
+      .addEventListener('click', this._handleDeleteCard.bind(this));
 
     this._element
       .querySelector('.element__like-btn')

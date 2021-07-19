@@ -1,9 +1,9 @@
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import Section from '../components/Section.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {
   closePopupImage,
@@ -36,7 +36,7 @@ const formProfileValidation = new FormValidator(
 );
 const formImgValidation = new FormValidator(validConfig, formImgElement);
 
-function handleImgFormSubmit(evt) {
+function handleImgFormSubmit() {
   elementsContainer.prepend(
     getCardElement({
       name: formNameImg.value,
@@ -45,11 +45,6 @@ function handleImgFormSubmit(evt) {
   );
   formImgElement.reset(); //Обнуляем поле ввода
 }
-
-// function render() {
-//   const elementsList = elements.map(getCardElement);
-//   elementsContainer.append(...elementsList);
-// }
 
 const getCardElement = (item) => {
   const card = new Card(item, '.template-element', {
@@ -62,7 +57,6 @@ const getCardElement = (item) => {
 
   return newElement;
 };
-// render();
 
 // обрабатывает отправку формы профиля
 function handleProfileFormSubmit() {
@@ -106,6 +100,7 @@ const section = new Section(
   { items: elements, renderer: getCardElement },
   '.elements'
 );
+
 section.rendererItems();
 
 document.addEventListener('click', (evt) => {

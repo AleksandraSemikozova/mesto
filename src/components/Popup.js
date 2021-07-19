@@ -3,23 +3,24 @@ import { EscKey } from '../utils/constants.js';
 export default class Popup {
   constructor(popup) {
     this._popup = popup;
-    this._handleEscClose = this._handleEscClose(this);
-    this._handleOverlayClose = this._handleOverlayClose(this);
   }
 
   open() {
     !this._popup.classList.contains('popup_opened') &&
       this._popup.classList.add('popup_opened');
-    document.addEventListener('keydown', this._handleEscClose);
-    document.addEventListener('mousedown', this._handleOverlayClose);
+    document.addEventListener('keydown', this._handleEscClose.bind(this));
+    document.addEventListener('mousedown', this._handleOverlayClose.bind(this));
   }
 
   close() {
     this._popup.classList.contains('popup_opened') &&
       this._popup.classList.remove('popup_opened');
 
-    document.removeEventListener('keydown', this._handleEscClose);
-    document.removeEventListener('mousedown', this._handleOverlayClose);
+    document.removeEventListener('keydown', this._handleEscClose.bind(this));
+    document.removeEventListener(
+      'mousedown',
+      this._handleOverlayClose.bind(this)
+    );
   }
 
   _handleEscClose(event) {
