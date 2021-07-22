@@ -1,4 +1,5 @@
 import './index.css';
+
 import Card from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import Popup from '../components/Popup.js';
@@ -37,18 +38,8 @@ const formProfileValidation = new FormValidator(
 );
 const formImgValidation = new FormValidator(validConfig, formImgElement);
 
-function handleImgFormSubmit() {
-  elementsContainer.prepend(
-    getCardElement({
-      name: formNameImg.value,
-      link: formLinkImg.value,
-    })
-  );
-  formImgElement.reset(); //Обнуляем поле ввода
-}
-
 const getCardElement = (item) => {
-  const card = new Card(item, '.template-element', {
+  const card = new Card(item, ".template-element", {
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
@@ -59,9 +50,18 @@ const getCardElement = (item) => {
   return newElement;
 };
 
+function handleImgFormSubmit(data) {
+  elementsContainer.prepend(
+    getCardElement({
+      name: data.name,
+      link: data.link,
+    })
+  );
+}
+
 // обрабатывает отправку формы профиля
-function handleProfileFormSubmit() {
-  userInfo.setUserInfo(formNameInput.value, formJobInput.value);
+function handleProfileFormSubmit(values) {
+  userInfo.setUserInfo(values.username, values.job);
 }
 
 const popupWithImage = new PopupWithImage(popupImage);
@@ -69,25 +69,25 @@ popupWithImage.setEventListeners();
 
 const popupAddImage = new PopupWithForm({
   popup: popupAddImg,
-  submitForm: handleImgFormSubmit,
+  submitForm: (data) => handleImgFormSubmit(data),
 });
 popupAddImage.setEventListeners();
 
 const popupEditProfile = new PopupWithForm({
   popup: popupProfile,
-  submitForm: handleProfileFormSubmit,
+  submitForm: (values) => handleProfileFormSubmit(values),
 });
 popupEditProfile.setEventListeners();
 
-openPopupProfileBtn.addEventListener('click', () => {
+openPopupProfileBtn.addEventListener("click", () => {
   popupEditProfile.open();
   const userInfoData = userInfo.getUserInfo();
-  formNameInput.value = userInfoData.name;
+  formNameInput.value = userInfoData.username;
   formJobInput.value = userInfoData.job;
   formProfileValidation.clearValidation();
 });
 
-openPopupImgBtn.addEventListener('click', () => {
+openPopupImgBtn.addEventListener("click", () => {
   popupAddImage.open();
   formImgValidation.clearValidation();
 });
@@ -97,18 +97,13 @@ const userInfo = new UserInfo({
   profileJob: profileSelectors.profileJob,
 });
 
-const section = new Section(
-  { items: elements, renderer: getCardElement },
-  '.elements'
-);
+const section = new Section({ renderer: getCardElement }, ".elements");
 
-section.rendererItems();
+function renderCards(elements) {
+  section.rendererItems(elements);
+}
 
-document.addEventListener('click', (evt) => {
-  if (evt.target === document.querySelector('.popup_opened')) {
-    evt.target.classList.remove('popup_opened');
-  }
-});
+renderCards(elements);
 
 formProfileValidation.enableValidation();
 formImgValidation.enableValidation();
