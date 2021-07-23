@@ -39,7 +39,7 @@ const formProfileValidation = new FormValidator(
 const formImgValidation = new FormValidator(validConfig, formImgElement);
 
 const getCardElement = (item) => {
-  const card = new Card(item, ".template-element", {
+  const card = new Card(item, '.template-element', {
     handleCardClick: (name, link) => {
       popupWithImage.open(name, link);
     },
@@ -51,12 +51,7 @@ const getCardElement = (item) => {
 };
 
 function handleImgFormSubmit(data) {
-  elementsContainer.prepend(
-    getCardElement({
-      name: data.name,
-      link: data.link,
-    })
-  );
+  section.prependItem(getCardElement(data));
 }
 
 // обрабатывает отправку формы профиля
@@ -79,7 +74,7 @@ const popupEditProfile = new PopupWithForm({
 });
 popupEditProfile.setEventListeners();
 
-openPopupProfileBtn.addEventListener("click", () => {
+openPopupProfileBtn.addEventListener('click', () => {
   popupEditProfile.open();
   const userInfoData = userInfo.getUserInfo();
   formNameInput.value = userInfoData.username;
@@ -87,7 +82,7 @@ openPopupProfileBtn.addEventListener("click", () => {
   formProfileValidation.clearValidation();
 });
 
-openPopupImgBtn.addEventListener("click", () => {
+openPopupImgBtn.addEventListener('click', () => {
   popupAddImage.open();
   formImgValidation.clearValidation();
 });
@@ -97,7 +92,12 @@ const userInfo = new UserInfo({
   profileJob: profileSelectors.profileJob,
 });
 
-const section = new Section({ renderer: getCardElement }, ".elements");
+const section = new Section(
+  {
+    renderer: (data) => section.addItem(getCardElement(data)),
+  },
+  '.elements'
+);
 
 function renderCards(elements) {
   section.rendererItems(elements);

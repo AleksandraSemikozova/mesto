@@ -11,14 +11,12 @@ export default class Popup {
     !this._popup.classList.contains("popup_opened") &&
       this._popup.classList.add("popup_opened");
     document.addEventListener("keydown", this._handleEscClose);
-    this._popup.addEventListener("mousedown", this._handleOverlayClose);
   }
 
   close() {
     this._popup.classList.contains("popup_opened") &&
       this._popup.classList.remove("popup_opened");
     document.removeEventListener("keydown", this._handleEscClose);
-    document.removeEventListener("mousedown", this._handleOverlayClose);
   }
 
   _handleEscClose(event) {
@@ -37,5 +35,6 @@ export default class Popup {
     this._popup
       .querySelector(".popup__close-icon")
       .addEventListener("click", () => this.close());
+      this._popup.addEventListener('mousedown', (event) => this._handleOverlayClose(event))
   }
 }
