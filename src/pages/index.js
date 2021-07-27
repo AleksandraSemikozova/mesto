@@ -5,9 +5,11 @@ import { FormValidator } from '../components/FormValidator.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithSubmit from '../components/PopupWithSubmit';
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
 import {
+  popupDeleteImg,
   closePopupImage,
   closePopupImgBtn,
   closePopupProfileBtn,
@@ -39,11 +41,35 @@ const formProfileValidation = new FormValidator(
 const formImgValidation = new FormValidator(validConfig, formImgElement);
 
 const getCardElement = (item) => {
-  const card = new Card(item, '.template-element', {
-    handleCardClick: (name, link) => {
-      popupWithImage.open(name, link);
+  const card = new Card(
+    item,
+    '.template-element',
+    {
+      handleCardClick: (name, link) => {
+        popupWithImage.open(name, link);
+      },
+      handleCardLike: () => {
+        const likedCard = card.likedCard();
+        const resultApi = likedCard
+          ? api.dislikeCard(card.getIdCard())
+          : api.likeCard(card.getIdCard());
+
+        resultApi
+          .then((data) => {
+            card.setLikes(data.likes);
+            card.renderLikes();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+      handleCardDelete: () => {
+        popupConfirmDelete.open(card);
+      },
     },
-  });
+    userID,
+    item._id
+  );
 
   const newElement = card.generateCard();
 
@@ -73,6 +99,27 @@ const popupEditProfile = new PopupWithForm({
   submitForm: (values) => handleProfileFormSubmit(values),
 });
 popupEditProfile.setEventListeners();
+
+const popupConfirmDelete = new PopupWithSubmit(
+  popupDeleteImg,
+  (event, card) => {
+    confirmDelete(event, card);
+  }
+);
+popupConfirmDelete.addEventListeners();
+
+const confirmDelete = (evt, newCard) => {
+  evt.preventDefault();
+  api
+    .removeCard(newCard.getIdCard())
+    .then((res) => {
+      newCard.removeCard();
+      popupConfirmDelete.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 openPopupProfileBtn.addEventListener('click', () => {
   popupEditProfile.open();
