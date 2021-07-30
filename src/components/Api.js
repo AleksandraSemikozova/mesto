@@ -8,13 +8,13 @@ export default class Api {
     return fetch(`${this._address}/cards`, {
       headers: this._headers,
     }).then(this._checkResponse);
-  } // Получаем массив карточек с сервера
+  } // Загружаем картинки с сервера
 
   getUserInfo() {
     return fetch(`${this._address}/users/me`, {
       headers: this._headers,
     }).then(this._checkResponse);
-  } // Получаем информацию о пользователе с сервера
+  } // Загружаем информацию о пользователе с сервера
 
   editUserInfo(name, about) {
     return fetch(`${this._address}/users/me`, {
@@ -25,7 +25,7 @@ export default class Api {
         about: about,
       }),
     }).then(this._checkResponse);
-  }
+  } // Отправляем обновленную информацию о пользователе
 
   addCard(name, link) {
     return fetch(`${this._address}/cards`, {
@@ -36,7 +36,7 @@ export default class Api {
         link: link,
       }),
     }).then(this._checkResponse);
-  }
+  } // Отправляем новую картинку(информацию о добавляемой картинке)
 
   editUserAvatar(url) {
     return fetch(`${this._address}/users/me/avatar`, {
@@ -46,28 +46,29 @@ export default class Api {
         avatar: url,
       }),
     }).then(this._checkResponse);
-  }
+  } // Отправляем новый аватар ползователя
 
   likeCard(cardId) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: 'PUT',
       headers: this._headers,
     }).then(this._checkResponse);
-  }
+  } // Информация о лайках
 
   dislikeCard(cardId) {
     return fetch(`${this._address}/cards/likes/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResponse);
-  }
+  } // Снимаем лайк
 
   removeCard(cardId) {
     return fetch(`${this._address}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     }).then(this._checkResponse);
-  }
+  } // Удаляем картинку с определенным ID
+
   _checkResponse(res) {
     if (!res.ok) {
       return Promise.reject(`Ошибка ${res.status}`);

@@ -1,4 +1,5 @@
 const EscKey = 'Escape';
+const userId = '7ce1febf626d7601abcc8f6a';
 
 //----------- Попапы --------------------
 const popupImage = document.querySelector('.popup_content_img');
@@ -63,6 +64,7 @@ const validConfig = {
 
 export {
   EscKey,
+  userId,
   popupImage,
   popupImageSelector,
   popupDeleteImg,

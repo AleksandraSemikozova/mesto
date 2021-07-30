@@ -2,7 +2,7 @@ import { EscKey } from '../utils/constants.js';
 
 export default class Popup {
   constructor(popup) {
-    this._popup = document.querySelector('.popup');
+    this._popup = popup;
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleOverlayClose = this._handleOverlayClose.bind(this);
   }
