@@ -14,9 +14,9 @@ export default class Card {
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeIcon = handleLikeIcon;
     this._countLikes = data.likes;
+    this._userID = userId;
     this._ownerID = data.owner._id;
     this._cardID = cardId;
-    this._userID = userId;
   }
 
   // Клонирует разметку картинки

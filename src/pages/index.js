@@ -11,7 +11,6 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import {
   EscKey,
-  userId,
   popupImage,
   popupImageSelector,
   popupDeleteImg,
@@ -44,6 +43,7 @@ import {
   imageElement,
 } from '../utils/constants.js';
 import { elements } from '../utils/initial-cards.js';
+let userId;
 
 const api = new Api({
   address: 'https://mesto.nomoreparties.co/v1/cohort-26',
@@ -55,6 +55,7 @@ const api = new Api({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, element]) => {
+    userId = data._id;
     userInfo.setUserInfo(data);
     section.rendererItems(element);
   })
@@ -118,8 +119,8 @@ function handleProfileFormSubmit(info) {
   popupEditProfile.renderLoading(true);
   api
     .editUserInfo(info.username, info.job)
-    .then(() => {
-      userInfo.setUserInfo(info);
+    .then((res) => {
+      userInfo.setUserInfo(res);
       popupEditProfile.close();
     })
     .finally(() => {
@@ -229,6 +230,7 @@ popupConfirmDelete.setEventListeners();
 // Удаляем картинку
 const deleteConfirm = (event, card) => {
   event.preventDefault();
+
   api
     .removeCard(card.getIdCard()) // Передаем Id картинки, которую нужно удалить
     .then((response) => {

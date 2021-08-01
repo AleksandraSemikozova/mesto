@@ -1,9 +1,8 @@
 .profile {
   max-width: 100%;
   display: grid;
-  grid-template-areas:
-    'avatar info button';
-  grid-template-columns: 120px 336px 1fr;
+  grid-template-areas: 'avatar info button';
+  grid-template-columns: 120px 400px 1fr;
   grid-gap: 30px;
   align-items: center;
 }
