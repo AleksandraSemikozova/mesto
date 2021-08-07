@@ -16,6 +16,14 @@ export default class PopupWithSubmit extends Popup {
     });
   }
 
+  renderLoading(isLoading, initialMessage = 'Удаление...') {
+    if (isLoading) {
+      this._popupSubmitButton.textContent = initialMessage;
+    } else {
+      this._popupSubmitButton.textContent = this._defaultSubmitButtonText;
+    }
+  }
+
   open(card) {
     this._card = card;
     super.open();

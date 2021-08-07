@@ -230,12 +230,16 @@ popupConfirmDelete.setEventListeners();
 // Удаляем картинку
 const deleteConfirm = (event, card) => {
   event.preventDefault();
+  popupConfirmDelete.renderLoading(true);
 
   api
     .removeCard(card.getIdCard()) // Передаем Id картинки, которую нужно удалить
     .then((response) => {
       card.removeCard(); // Удаляем картинку
       popupConfirmDelete.close(); // Закрываем Попап
+    })
+    .finally(() => {
+      popupConfirmDelete.renderLoading(false);
     })
     .catch((err) => {
       console.log(err);
