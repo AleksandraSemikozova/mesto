@@ -14,6 +14,8 @@ export default class UserInfo {
     return userValue;
   }
 
+  // получаем данные пользователя
+
   setUserInfo({ name, about, avatar }) {
     if (name) {
       this._profileName.textContent = name;
